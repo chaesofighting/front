@@ -1,8 +1,11 @@
+
+
 /*!
 * Start Bootstrap - Clean Blog v6.0.9 (https://startbootstrap.com/theme/clean-blog)
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
 */
+
 window.addEventListener('DOMContentLoaded', () => {
     let scrollPos = 0;
     const mainNav = document.getElementById('mainNav');
@@ -79,8 +82,6 @@ document.getElementById('bmrForm').addEventListener('submit', function (e) {
         totalCalories -= 300; // Subtract 300 calories for Obesity
     }
 
-    const rand = Math.floor(Math.random() * 4);
-
     document.getElementById('result').innerHTML = `<p class="lead">당신의 하루 필요 칼로리는 <strong>${totalCalories} kcal</strong> 입니다.</p>`;
 
 });
@@ -90,3 +91,60 @@ function calculateBMR(age, weight, height) {
 }
 
 
+function moveToIndexCopy2() {
+    // 페이지 이동
+
+    const result = {
+        아침: [
+            {
+                menu: '계란',
+                g: 100,
+            },
+            {
+                menu: '계란',
+                g: 100,
+            }
+        ],
+        아침간식: null,
+        점심: [],
+        점심간식: [],
+        저녁: [],
+    };
+    window.localStorage.setItem('result', JSON.stringify(result));
+
+    window.location.href = "index copy 2.html";
+
+    /*
+
+    window.axios.post('/', {
+        data: {
+
+        }
+    }).then((response) => {
+        const result = response.data;
+        window.localStorage.setItem('result', JSON.stringify(result));
+
+        window.location.href = "index copy 2.html";
+    });
+
+    */
+}
+
+
+
+// 나머지 함수들은 유지
+
+function getDataFromLocalStorage() {
+    const result = JSON.parse(window.localStorage.getItem('result'));
+    console.log(result);
+    return result;
+};
+
+function drawDataToDOM(data) {
+
+};
+
+function loadResultPage() {
+    const data = getDataFromLocalStorage();
+    drawDataToDOM(data);
+};
