@@ -89,33 +89,4 @@ function calculateBMR(age, weight, height) {
     return 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
 }
 
-document.getElementById('receiveDietRecommendationsBtn').addEventListener('click', function (e) {
-    e.preventDefault();
 
-    // New code for sending data to the backend
-    sendDataToBackend(totalCalories, syndrome, rand);
-});
-
-function sendDataToBackend(totalCalories, syndrome, rand) {
-    // Make an AJAX request to the Spring Boot backend endpoint
-    $.ajax({
-        url: 'http://localhost:8080/calculate', // Replace with your actual Spring Boot backend endpoint
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            totalCalories: totalCalories,
-            syndrome: syndrome,
-            rand: rand
-        }),
-        success: function (response) {
-            // Handle the successful response from the backend
-            console.log('Data sent successfully:', response);
-            // Optionally, you can redirect to another page after a successful response
-            window.location.href = 'index copy 2.html';
-        },
-        error: function (error) {
-            // Handle errors during the AJAX request
-            console.error('Error sending data:', error);
-        }
-    });
-}
